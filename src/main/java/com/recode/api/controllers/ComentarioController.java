@@ -18,7 +18,7 @@ import com.recode.api.domain.Comentario;
 import com.recode.api.services.ComentarioService;
 
 @RestController
-@RequestMapping("comentarios")
+@RequestMapping("/comentarios")
 public class ComentarioController {
 	
 	@Autowired

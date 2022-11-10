@@ -9,13 +9,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 
 
+
 @Entity
+
 public class Comentario implements Serializable{
 
 	 
@@ -25,29 +26,32 @@ public class Comentario implements Serializable{
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Integer id;
 		
-	    @ManyToOne
-		private Conto conto;
+	
+		@Column
+		private int conto_id;
 		
 		@Column
 		private String autor;
 		
 		@Column
-		private String mensagem;
+		private String menssagem;
 		
 		@Column(name = "data_hora_msg")
 		@Temporal(TemporalType.TIMESTAMP)
 		
-		private Date data_hora_msg;
+		private Date dataHoraMensagem;
 		
-		public Comentario () {}
+		public Comentario () {
+			
+		}
 		
 
-		public Comentario(String autor, String mensagem, Conto conto) {
+		public Comentario(String autor, String menssagem, Integer conto_id) {
 			
 			this.autor = autor;
-			this.mensagem = mensagem;
-			this.conto = conto;
-			this.data_hora_msg = Calendar.getInstance().getTime();
+			this.menssagem = menssagem;
+			this.conto_id = conto_id;
+			this.dataHoraMensagem = Calendar.getInstance().getTime();
 		}
 		
 		public Integer getId() {
@@ -58,13 +62,23 @@ public class Comentario implements Serializable{
 			this.id = id;
 		}
 
-		public Conto getConto() {
-			return conto;
+		
+		
+
+		public int getConto_id() {
+			return conto_id;
 		}
 
-		public void setConto(Conto conto) {
-			this.conto = conto;
+
+		public void setConto_id(int conto_id) {
+			this.conto_id = conto_id;
 		}
+
+
+		public static long getSerialversionuid() {
+			return serialVersionUID;
+		}
+
 
 		public String getAutor() {
 			return autor;
@@ -74,20 +88,23 @@ public class Comentario implements Serializable{
 			this.autor = autor;
 		}
 
-		public String getMensagem() {
-			return mensagem;
+		public String getMenssagem() {
+			return menssagem;
 		}
 
-		public void setMensagem(String mensagem) {
-			this.mensagem = mensagem;
+		public void setMenssagem(String menssagem) {
+			this.menssagem = menssagem;
 		}
 
-		public Date getData_hora_msg() {
-			return data_hora_msg;
+
+		public Date getDataHoraMensagem() {
+			return dataHoraMensagem;
 		}
 
-		public void setData_hora_msg(Date data_hora_msg) {
-			this.data_hora_msg = data_hora_msg;
+
+		public void setDataHoraMensagem(Date dataHoraMensagem) {
+			this.dataHoraMensagem = dataHoraMensagem;
 		}
 
+		
 }

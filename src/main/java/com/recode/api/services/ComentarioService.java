@@ -31,9 +31,9 @@ public class ComentarioService {
 	public Comentario update(Integer id, Comentario newComentario) {
 		Comentario comentario = repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid id: " + id));
 		comentario.setAutor(newComentario.getAutor());
-		comentario.setMensagem(newComentario.getMensagem());
-		comentario.setConto(newComentario.getConto());
-		comentario.setData_hora_msg(newComentario.getData_hora_msg());
+		comentario.setMenssagem(newComentario.getMenssagem());
+		comentario.setConto_id(newComentario.getConto_id());
+		comentario.setDataHoraMensagem(newComentario.getDataHoraMensagem());
 		return repository.save(comentario);
 	}
 	
