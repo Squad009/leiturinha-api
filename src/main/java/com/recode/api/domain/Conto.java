@@ -26,7 +26,6 @@ public class Conto implements Serializable{
 	@Column(name = "titulo")
 	private String titulo;
 	
-	@Lob
 	private String conteudo;
 	
 	@ManyToOne

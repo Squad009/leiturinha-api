@@ -48,8 +48,9 @@ public class ContoController {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@GetMapping("{id}")
+	@GetMapping("conto")
 	public ResponseEntity<Conto> findById(@RequestParam("id") Integer id) {
+		System.out.print("ID " + id);
 		Conto conto = service.findById(id);
 		return ResponseEntity.ok().body(conto);
 	}
