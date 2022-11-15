@@ -3,9 +3,10 @@ package com.recode.api.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.recode.api.domain.Comentario;
+import com.recode.api.domain.Quizz;
+
 
 @Repository
-public interface ComentarioRepository extends JpaRepository<Comentario, Integer> {
+public interface QuizzRepository extends JpaRepository<Quizz, Integer> {
 
 }
