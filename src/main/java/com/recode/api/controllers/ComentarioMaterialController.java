@@ -1,5 +1,6 @@
 package com.recode.api.controllers;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class ComentarioMaterialController {
 	
 	@PostMapping
 	public ResponseEntity<ComentarioMaterial> save(@RequestBody ComentarioMaterial comentarioMaterial) {
+		comentarioMaterial.setDataHoraMensagem(Calendar.getInstance().getTime());
 		ComentarioMaterial comentario = service.save(comentarioMaterial);
 		
 		return ResponseEntity.ok().body(comentario);	
@@ -29,7 +31,7 @@ public class ComentarioMaterialController {
 	
 	@GetMapping
 	public ResponseEntity<List<ComentarioMaterial>> getAll() {
-		List<ComentarioMaterial> comentarios = service.getAll();
+		List<ComentarioMaterial> comentarios = service.getAllDesc();
 		
 		return ResponseEntity.ok().body(comentarios);
 	}

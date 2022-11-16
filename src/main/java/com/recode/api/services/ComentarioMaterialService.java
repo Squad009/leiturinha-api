@@ -19,6 +19,10 @@ public class ComentarioMaterialService {
 		return repository.findAll();
 	}
 	
+	public List<ComentarioMaterial> getAllDesc() {
+		return repository.findByOrderByDataHoraMensagemDesc();
+	}
+	
 	public ComentarioMaterial save(ComentarioMaterial comentarioMaterial) {
 		return repository.save(comentarioMaterial);
 	}

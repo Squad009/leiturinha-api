@@ -1,5 +1,6 @@
 package com.recode.api.controllers;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,31 +15,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.recode.api.domain.Comentario;
+import com.recode.api.domain.ComentarioConto;
 import com.recode.api.services.ComentarioService;
 
 @RestController
-@RequestMapping("/comentarios")
-public class ComentarioController {
+@RequestMapping("comentario_conto")
+public class ComentarioContoController {
 	
 	@Autowired
 	private ComentarioService service;
 	
 	@GetMapping
-	public ResponseEntity<List<Comentario>> getAll() {
-		List<Comentario> comentario = service.getAll();
-		return ResponseEntity.ok().body(comentario);
+	public ResponseEntity<List<ComentarioConto>> getAllDesc() {
+		List<ComentarioConto> comentarios = service.getAllDesc();
+		return ResponseEntity.ok().body(comentarios);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Comentario> save(@RequestBody Comentario comentario) {
-		Comentario savedComentario = service.save(comentario);
+	public ResponseEntity<ComentarioConto> save(@RequestBody ComentarioConto comentario) {
+		comentario.setDataHoraMensagem(Calendar.getInstance().getTime());
+		ComentarioConto savedComentario = service.save(comentario);
 		return ResponseEntity.ok().body(savedComentario);
 	}
 	
 	@PutMapping("{id}")
-	public ResponseEntity<Comentario> update(@PathVariable("id") Integer id, @RequestBody Comentario comentario) {
-		Comentario updatedComentario = service.update(id, comentario);
+	public ResponseEntity<ComentarioConto> update(@PathVariable("id") Integer id, @RequestBody ComentarioConto comentario) {
+		ComentarioConto updatedComentario = service.update(id, comentario);
 		return ResponseEntity.ok().body(updatedComentario);
 	}
 	
@@ -49,8 +51,8 @@ public class ComentarioController {
 	}
 	
 	@GetMapping("{id}")
-	public ResponseEntity<Comentario> findById(@RequestParam("id") Integer id) {
-		Comentario comentario = service.findById(id);
+	public ResponseEntity<ComentarioConto> findById(@RequestParam("id") Integer id) {
+		ComentarioConto comentario = service.findById(id);
 		return ResponseEntity.ok().body(comentario);
 	}
 

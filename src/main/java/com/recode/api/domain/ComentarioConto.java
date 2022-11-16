@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 
-public class Comentario implements Serializable{
+public class ComentarioConto implements Serializable{
 
 	 
 	private static final long serialVersionUID = 1L;
@@ -34,22 +34,22 @@ public class Comentario implements Serializable{
 		private String autor;
 		
 		@Column
-		private String menssagem;
+		private String mensagem;
 		
 		@Column(name = "data_hora_msg")
 		@Temporal(TemporalType.TIMESTAMP)
 		
 		private Date dataHoraMensagem;
 		
-		public Comentario () {
+		public ComentarioConto () {
 			
 		}
 		
 
-		public Comentario(String autor, String menssagem, Integer conto_id) {
+		public ComentarioConto(String autor, String mensagem, Integer conto_id) {
 			
 			this.autor = autor;
-			this.menssagem = menssagem;
+			this.mensagem = mensagem;
 			this.conto_id = conto_id;
 			this.dataHoraMensagem = Calendar.getInstance().getTime();
 		}
@@ -88,12 +88,12 @@ public class Comentario implements Serializable{
 			this.autor = autor;
 		}
 
-		public String getMenssagem() {
-			return menssagem;
+		public String getMensagem() {
+			return mensagem;
 		}
 
-		public void setMenssagem(String menssagem) {
-			this.menssagem = menssagem;
+		public void setMensagem(String menssagem) {
+			this.mensagem = menssagem;
 		}
 
 
