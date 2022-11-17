@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.recode.api.domain.Categoria;
 import com.recode.api.domain.Conto;
 import com.recode.api.services.ContoService;
 
@@ -23,6 +24,12 @@ public class ContoController {
 	
 	@Autowired
 	private ContoService service;
+	
+	@GetMapping("cat")
+	public ResponseEntity<List<Conto>> findByCategoria(@RequestParam("id_categoria") Integer id) {
+		List<Conto> contos = service.findByCategoria(id);
+		return ResponseEntity.ok().body(contos);
+	}
 	
 	@GetMapping
 	public ResponseEntity<List<Conto>> getAll() {
@@ -50,7 +57,6 @@ public class ContoController {
 	
 	@GetMapping("conto")
 	public ResponseEntity<Conto> findById(@RequestParam("id") Integer id) {
-		System.out.print("ID " + id);
 		Conto conto = service.findById(id);
 		return ResponseEntity.ok().body(conto);
 	}

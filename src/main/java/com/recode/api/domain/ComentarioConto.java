@@ -38,7 +38,6 @@ public class ComentarioConto implements Serializable{
 		
 		@Column(name = "data_hora_msg")
 		@Temporal(TemporalType.TIMESTAMP)
-		
 		private Date dataHoraMensagem;
 		
 		public ComentarioConto () {

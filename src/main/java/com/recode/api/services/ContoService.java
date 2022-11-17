@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.recode.api.domain.Categoria;
 import com.recode.api.domain.Conto;
 import com.recode.api.repositories.ContoRepository;
 
@@ -38,6 +39,10 @@ public class ContoService {
 	
 	public void remove(Integer id) {
 		repository.deleteById(id);
+	}
+	
+	public List<Conto> findByCategoria(Integer id) {
+		return repository.retrieveByCategoria(id);
 	}
 
 }
